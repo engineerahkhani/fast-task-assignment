@@ -1,11 +1,11 @@
 import React from 'react';
 import { createUseStyles, cnj } from '@core/utils/makeStyle';
-import { useTheme } from 'react-jss';
+import { ITheme } from '../../../types/theme';
 
 export interface ButtonComponentProps {
   className?: string;
   children: any;
-  variant: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary';
   onClick?: () => void;
   disabled?: boolean;
 }
@@ -14,30 +14,52 @@ const ButtonComponent: React.FC<ButtonComponentProps> = ({
   className,
   onClick,
   children,
-  variant,
+  variant = 'primary',
   disabled,
 }) => {
-  const theme = useTheme();
-  const classes = useStyles({ theme, variant });
+  const classes = useStyles();
 
   return (
     <button
       disabled={disabled}
       onClick={onClick}
-      className={cnj(classes.buttonComponentRoot, className)}
+      className={cnj(
+        classes.buttonComponentRoot,
+        disabled && classes.disabledButton,
+        variant === 'secondary' && classes.secondaryButton,
+        className
+      )}
     >
       {children}
     </button>
   );
 };
 
-const useStyles = createUseStyles({
-  buttonComponentRoot: {
-    background: ({ theme, variant }: any) => theme.colors.primary,
-  },
-  label: {
-    fontWeight: 'bold',
-  },
-});
+const useStyles = createUseStyles(
+  ({ radii, fontSizes, sizes, colors }: ITheme) => ({
+    buttonComponentRoot: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      border: 'none',
+      borderRadius: radii.xs,
+      padding: [[sizes.xs, sizes.sm]],
+      margin: 0,
+      textDecoration: 'none',
+      background: colors.primary,
+      color: colors.white,
+      fontFamily: 'sans-serif',
+      fontSize: fontSizes['1'],
+      cursor: 'pointer',
+      textAlign: 'center',
+    },
+    secondaryButton: {
+      background: colors.secondary,
+    },
+    disabledButton: {
+      opacity: 0.5,
+    },
+  })
+);
 
 export default ButtonComponent;

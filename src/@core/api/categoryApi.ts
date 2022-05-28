@@ -1,21 +1,21 @@
-import request from '../utils/request';
 import END_POINTS from '../constants/endpoints';
 import APP_CONFIG from '../constants/app-config';
 import { ICategory } from '../types';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 
-const getCategories = async () => {
-  const url = END_POINTS.categories;
-
-  const { data } = await request.get<Array<ICategory>>(url, {
-    params: {
+export const categoriesApi = createApi({
+  reducerPath: 'categoriesApi',
+  baseQuery: fetchBaseQuery({
+    baseUrl: APP_CONFIG.apiBaseUrl,
+    headers: {
       api_key: APP_CONFIG.apiKey,
-      language: APP_CONFIG.defaultLang,
     },
-  });
+  }),
+  endpoints: (builder) => ({
+    getCategories: builder.query<Array<ICategory>, string>({
+      query: () => END_POINTS.categories,
+    }),
+  }),
+});
 
-  return data;
-};
-
-const exports = { getCategories };
-
-export default exports;
+export const { useGetCategoriesQuery } = categoriesApi;

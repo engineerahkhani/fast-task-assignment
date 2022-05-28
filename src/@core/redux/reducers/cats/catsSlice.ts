@@ -23,6 +23,7 @@ export const catsSlice = createSlice({
   name: 'cats',
   initialState,
   reducers: {
+    setReset: () => initialState,
     setLoading: (state) => ({
       ...state,
       isLoading: state.page === 0,
@@ -37,7 +38,7 @@ export const catsSlice = createSlice({
       isLoading: false,
       isLoadingNextPage: false,
       isError: false,
-      data: [...state.data, ...action.payload.data],
+      data: action.payload.data,
       hasNextPage: action.payload.hasNextPage,
     }),
     setError: (state) => ({
@@ -53,6 +54,7 @@ export const catsSlice = createSlice({
   },
 });
 
-export const { setError, loadMore, setLoading, setSuccess } = catsSlice.actions;
+export const { setError, setReset, loadMore, setLoading, setSuccess } =
+  catsSlice.actions;
 
 export default catsSlice.reducer;

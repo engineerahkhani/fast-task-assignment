@@ -1,21 +1,34 @@
 import React from 'react';
 import Button from '@core/components/atoms/Button';
 import useTranslation from '@core/hooks/useTranslation';
-import { loadMore } from '@core/redux/reducers/cats/catsSlice';
+import { createUseStyles } from '@core/utils/makeStyle';
+import { ITheme } from '@core/types/theme';
 
 interface LoadMoreProps {
   onClick: () => void;
-  disabled:boolean
+  disabled: boolean;
 }
 
-const LoadMore: React.FC<LoadMoreProps> = ({disabled, onClick }) => {
+const LoadMore: React.FC<LoadMoreProps> = ({ disabled, onClick }) => {
   const { t } = useTranslation();
+  const classes = useStyles();
 
   return (
-    <Button disabled={disabled} variant="secondary" onClick={onClick}>
+    <Button
+      className={classes.loadMoreRoot}
+      disabled={disabled}
+      onClick={onClick}
+    >
       {t('loadMore')}
     </Button>
   );
 };
+
+const useStyles = createUseStyles(({ sizes }: ITheme) => ({
+  loadMoreRoot: {
+    margin: [[sizes.md, 'auto']],
+    width: 250,
+  },
+}));
 
 export default LoadMore;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createUseStyles } from '../../../utils/makeStyle';
+import { cnj, createUseStyles } from '@core/utils/makeStyle';
 
 const fallback = () => 'not found';
 
@@ -8,7 +8,7 @@ interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
 }
 
 const Image = React.forwardRef<HTMLImageElement, ImageProps>(
-  ({ src, ...rest }, ref) => {
+  ({ src, className, ...rest }, ref) => {
     const classes = useStyles();
 
     const [isError, setError] = useState(false);
@@ -21,7 +21,7 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>(
       <img
         ref={ref}
         {...rest}
-        className={classes.imageComponentRoot}
+        className={cnj(classes.imageComponentRoot, className)}
         src={isError ? fallback() : src}
         onError={handleError}
       />
@@ -30,8 +30,8 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>(
 );
 const useStyles = createUseStyles({
   imageComponentRoot: {
-    width: 250,
-    height: 'auto',
+    verticalAlign: 'middle',
+    maxWidth: '100%',
   },
 });
 export default Image;

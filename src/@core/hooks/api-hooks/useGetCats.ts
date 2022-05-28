@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { useEffect } from 'react';
 import catApi from '@core/api/catApi';
 import { useAppDispatch } from '../useAppDispatch';
@@ -6,6 +8,7 @@ import {
   setError,
   setLoading,
   setSuccess,
+  setReset,
   loadMore as loadMoreCats,
 } from '@core/redux/reducers/cats/catsSlice';
 import { useParams } from 'react-router-dom';
@@ -18,15 +21,23 @@ const useGetCats = (): CatsState & { loadMore: () => void } => {
   const { category } = useParams();
 
   useEffect(() => {
+    appDispatch(setReset());
     getData();
-  }, [category, page]);
+  }, [category]);
+
+  useEffect(() => {
+    getData();
+  }, [page]);
 
   const getData = () => {
+    console.log(state);
     appDispatch(setLoading());
     catApi
       .getCatsByCategory({ page, category })
       .then((res) => {
-        appDispatch(setSuccess({ data: res, hasNextPage: true }));
+        appDispatch(
+          setSuccess({ data: [...state.data, ...res], hasNextPage: true })
+        );
       })
       .catch(() => {
         appDispatch(setError());

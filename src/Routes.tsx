@@ -10,7 +10,6 @@ import Flex from '@core/components/atoms/Flex';
 export default function App() {
   return (
     <Flex>
-      <Text>Fast Task </Text>
       <Routes>
         <Route path="/" element={<SidebarLayout />}>
           <Route index element={<Home />} />

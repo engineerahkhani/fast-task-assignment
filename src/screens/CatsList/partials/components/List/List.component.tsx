@@ -1,3 +1,4 @@
+import React from 'react';
 import Loading from './List.loading';
 import Flex from '@core/components/atoms/Flex';
 import Alert from '@core/components/molecules/Alert';
@@ -5,6 +6,8 @@ import Card from '@core/components/organisms/CatCard';
 import { ICat } from '@core/types';
 import useTranslation from '@core/hooks/useTranslation';
 import { createUseStyles } from '@core/utils/makeStyle';
+import { ITheme } from '../../../../../@core/types/theme';
+import Button from '@core/components/atoms/Button';
 
 interface IListProps {
   isLoading: boolean;
@@ -33,19 +36,20 @@ const CatsList: React.FC<IListProps> = ({ isLoading, isError, list }) => {
 
   return (
     <Flex className={classes.listComponentRoot}>
-      {list?.map((x) => (
-        <Card key={x.id} data={x} />
+      {list?.map((item) => (
+        <Card key={item.id} data={item} />
       ))}
     </Flex>
   );
 };
 
-const useStyles = createUseStyles({
+const useStyles = createUseStyles(({ sizes }: ITheme) => ({
   listComponentRoot: {
+    padding: sizes.sm,
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
-});
+}));
 
 export default CatsList;

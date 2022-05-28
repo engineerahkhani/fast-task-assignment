@@ -1,9 +1,10 @@
 import MainTemplate from '@core/components/templates/MainLayout';
 import ErrorBoundary from '@core/components/atoms/ErrorBoundary';
-import Routes from './Routes';
 import { createUseStyles } from '@core/utils/makeStyle';
 import cssReset from '@core/utils/cssReset';
 import globalCss from '@core/utils/globalCss';
+import { ITheme } from './@core/types/theme';
+import Routes from './Routes';
 
 function App() {
   useStyles();
@@ -17,7 +18,7 @@ function App() {
   );
 }
 
-const useStyles = createUseStyles(() => ({
+const useStyles = createUseStyles(({ colors }: ITheme) => ({
   '@global': {
     ...cssReset,
     ...globalCss,
@@ -25,7 +26,7 @@ const useStyles = createUseStyles(() => ({
       display: 'none',
     },
     body: {
-      // background: colors.background,
+      background: colors.background,
     },
   },
 }));

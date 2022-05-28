@@ -1,11 +1,9 @@
 const radii = {
-    1: "4px",
-    2: "6px",
-    3: "8px",
-    4: "12px",
-    round: "50%",
-    pill: "9999px",
-  };
-  
-  export { radii };
-  
+  xs: 4,
+  sm: 6,
+  md: 8,
+  lg: 12,
+  round: '50%',
+};
+
+export { radii };
