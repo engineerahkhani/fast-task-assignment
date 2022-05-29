@@ -24,6 +24,8 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>(
         className={cnj(classes.imageComponentRoot, className)}
         src={isError ? fallback() : src}
         onError={handleError}
+        loading="lazy"
+        alt="…"
       />
     );
   }

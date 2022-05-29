@@ -7,7 +7,6 @@ import { ICat } from '@core/types';
 import useTranslation from '@core/hooks/useTranslation';
 import { createUseStyles } from '@core/utils/makeStyle';
 import { ITheme } from '../../../../../@core/types/theme';
-import Button from '@core/components/atoms/Button';
 
 interface IListProps {
   isLoading: boolean;

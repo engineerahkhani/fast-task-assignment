@@ -12,7 +12,9 @@ import { useAppSelector } from '../../@core/hooks/useAppSelector';
 const CatsList = () => {
   const classes = useStyles();
   const dispatch = useAppDispatch();
-  const { data, isLoading, isError } = useAppSelector((state) => state.cats);
+  const { data, isLoading, isError, isLoadingNextPage } = useAppSelector(
+    (state) => state.cats
+  );
   const [page, setPage] = useState(0);
   const { category = '1' } = useParams();
 
@@ -31,7 +33,7 @@ const CatsList = () => {
     <Flex className={classes.catsListRoot}>
       <List list={data} isLoading={isLoading} isError={isError} />
       {!isLoading && (
-        <LoadMore disabled={isLoading} onClick={onClickLoadMore} />
+        <LoadMore disabled={isLoadingNextPage} onClick={onClickLoadMore} />
       )}
     </Flex>
   );
