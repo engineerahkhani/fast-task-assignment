@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useAppDispatch } from '@core/hooks/useAppDispatch';
 import { fetchCatsAsync, setReset } from '@core/redux/reducers/cats/catsSlice';
-import { useAppSelector } from '../../@core/hooks/useAppSelector';
+import { useAppSelector } from '@core/hooks/useAppSelector';
 
 const CatsList = () => {
   const classes = useStyles();

@@ -6,7 +6,7 @@ import Card from '@core/components/organisms/CatCard';
 import { ICat } from '@core/types';
 import useTranslation from '@core/hooks/useTranslation';
 import { createUseStyles } from '@core/utils/makeStyle';
-import { ITheme } from '../../../../../@core/types/theme';
+import { ITheme } from '@core/types/theme';
 
 interface IListProps {
   isLoading: boolean;
