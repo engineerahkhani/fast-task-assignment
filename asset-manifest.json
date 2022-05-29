@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/fast-task-assignment/static/js/main.470d3403.js",
+    "main.js": "/fast-task-assignment/static/js/main.667b2fe6.js",
     "static/js/392.45cae61f.chunk.js": "/fast-task-assignment/static/js/392.45cae61f.chunk.js",
-    "static/js/98.fb467f03.chunk.js": "/fast-task-assignment/static/js/98.fb467f03.chunk.js",
+    "static/js/98.437665d7.chunk.js": "/fast-task-assignment/static/js/98.437665d7.chunk.js",
     "static/js/166.225537e0.chunk.js": "/fast-task-assignment/static/js/166.225537e0.chunk.js",
     "static/js/787.b3ab05f0.chunk.js": "/fast-task-assignment/static/js/787.b3ab05f0.chunk.js",
     "index.html": "/fast-task-assignment/index.html",
-    "main.470d3403.js.map": "/fast-task-assignment/static/js/main.470d3403.js.map",
+    "main.667b2fe6.js.map": "/fast-task-assignment/static/js/main.667b2fe6.js.map",
     "392.45cae61f.chunk.js.map": "/fast-task-assignment/static/js/392.45cae61f.chunk.js.map",
-    "98.fb467f03.chunk.js.map": "/fast-task-assignment/static/js/98.fb467f03.chunk.js.map",
+    "98.437665d7.chunk.js.map": "/fast-task-assignment/static/js/98.437665d7.chunk.js.map",
     "166.225537e0.chunk.js.map": "/fast-task-assignment/static/js/166.225537e0.chunk.js.map",
     "787.b3ab05f0.chunk.js.map": "/fast-task-assignment/static/js/787.b3ab05f0.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.470d3403.js"
+    "static/js/main.667b2fe6.js"
   ]
 }
