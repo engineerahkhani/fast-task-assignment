@@ -13,15 +13,15 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <LanguageProvider>
-      <Provider store={store}>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <LanguageProvider>
+        <Provider store={store}>
           <ThemeProvider>
             <App />
           </ThemeProvider>
-        </BrowserRouter>
-      </Provider>
-    </LanguageProvider>
+        </Provider>
+      </LanguageProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
