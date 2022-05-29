@@ -2,7 +2,7 @@
   "name": "fast-task-assignment",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/engineerahkhani/fast-task-assignment/",
+  "homepage": "https://engineerahkhani.github.io/fast-task-assignment/",
   "dependencies": {
     "@loadable/component": "^5.15.2",
     "@reduxjs/toolkit": "^1.8.1",
