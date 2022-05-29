@@ -1,6 +1,7 @@
-import { Languages } from "react-tiny-i18n";
-import APP_CONFIG from "../../constants/app-config";
-import en from "./en";
+import React from 'react';
+import { Languages } from 'react-tiny-i18n';
+import APP_CONFIG from '../../constants/app-config';
+import en from './en';
 
 const languages = {
   en,

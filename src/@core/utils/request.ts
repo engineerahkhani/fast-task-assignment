@@ -7,7 +7,6 @@ const request = axios.create({
 
 axios.interceptors.request.use(
   (request) => {
-    console.log(request);
     // Edit request config
     return request;
   },
@@ -19,12 +18,10 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
   (response) => {
-    console.log(response);
     // Edit response config
     return response;
   },
   (error) => {
-    console.log(error);
     return Promise.reject(error);
   }
 );

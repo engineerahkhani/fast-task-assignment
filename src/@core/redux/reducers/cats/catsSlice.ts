@@ -1,5 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ICat } from '@core/types';
+import catApi from '../../../api/catApi';
 
 export interface CatsState {
   data: Array<ICat>;
@@ -18,6 +19,14 @@ const initialState: CatsState = {
   hasNextPage: false,
   page: 0,
 };
+
+export const fetchCatsAsync = createAsyncThunk(
+  'cats/fetchCategory',
+  async ({ category, page }: { category: string; page: number }) => {
+    const response = await catApi.getCatsByCategory({ category, page });
+    return response;
+  }
+);
 
 export const catsSlice = createSlice({
   name: 'cats',
@@ -52,9 +61,24 @@ export const catsSlice = createSlice({
       page: state.page + 1,
     }),
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchCatsAsync.pending, (state) => {
+        state.isLoading = true;
+        state.isError = false;
+      })
+      .addCase(fetchCatsAsync.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.data = [...state.data, ...action.payload];
+      })
+      .addCase(fetchCatsAsync.rejected, (state) => {
+        state.isLoading = false;
+        state.isError = true;
+      });
+  },
 });
 
-export const { setError, setReset, loadMore, setLoading, setSuccess } =
-  catsSlice.actions;
+export const { setReset } = catsSlice.actions;
 
 export default catsSlice.reducer;

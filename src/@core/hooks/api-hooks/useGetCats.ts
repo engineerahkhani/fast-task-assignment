@@ -30,7 +30,6 @@ const useGetCats = (): CatsState & { loadMore: () => void } => {
   }, [page]);
 
   const getData = () => {
-    console.log(state);
     appDispatch(setLoading());
     catApi
       .getCatsByCategory({ page, category })

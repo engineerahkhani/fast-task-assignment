@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@loadable/component": "^5.15.2",
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.0.1",
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "@types/classnames": "^2.2.10",
+    "@types/loadable__component": "^5.13.4",
     "prettier": "^2.2.1"
   },
   "scripts": {

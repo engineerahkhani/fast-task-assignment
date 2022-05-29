@@ -29,10 +29,15 @@ const useStyles = createUseStyles(({ media, radii, sizes }: ITheme) => ({
     height: 250,
   },
   [media.tablet]: {
-    flexBasis: '33.33%',
+    catCardSkeletonRoot: {
+      flexBasis: '33.33%',
+      height: 250,
+    },
   },
   [media.desktop]: {
-    flexBasis: '25%',
+    catCardSkeletonRoot: {
+      flexBasis: '25%',
+    },
   },
 }));
 

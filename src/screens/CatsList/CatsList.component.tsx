@@ -3,32 +3,35 @@ import Flex from '@core/components/atoms/Flex';
 import List from './partials/components/List';
 import LoadMore from './partials/components/LoadMore';
 import { createUseStyles } from '@core/utils/makeStyle';
-import { useGetCatsByCategoryQuery } from '@core/api/catApi';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
-import { ICat } from '../../@core/types';
+import { useAppDispatch } from '@core/hooks/useAppDispatch';
+import { fetchCatsAsync, setReset } from '@core/redux/reducers/cats/catsSlice';
+import { useAppSelector } from '../../@core/hooks/useAppSelector';
 
 const CatsList = () => {
   const classes = useStyles();
-  const [page, setPage] = useState(1);
-  const [cats, setCats] = useState<Array<ICat>>([]);
-  const { category } = useParams();
-  const { data, error, isLoading, isFetching } = useGetCatsByCategoryQuery({
-    category,
-    page,
-  } as any);
+  const dispatch = useAppDispatch();
+  const { data, isLoading, isError } = useAppSelector((state) => state.cats);
+  const [page, setPage] = useState(0);
+  const { category = '1' } = useParams();
 
   useEffect(() => {
-    setCats((prev) => [...prev, ...(data || [])]);
-  }, [isFetching]);
+    dispatch(setReset());
+    dispatch(fetchCatsAsync({ category: category, page: 0 }));
+  }, [category]);
+
+  useEffect(() => {
+    if (page > 1) dispatch(fetchCatsAsync({ category: category, page }));
+  }, [page]);
 
   const onClickLoadMore = () => setPage((prev) => prev + 1);
 
   return (
     <Flex className={classes.catsListRoot}>
-      <List list={cats} isLoading={isLoading} isError={!!error} />
+      <List list={data} isLoading={isLoading} isError={isError} />
       {!isLoading && (
-        <LoadMore disabled={isFetching} onClick={onClickLoadMore} />
+        <LoadMore disabled={isLoading} onClick={onClickLoadMore} />
       )}
     </Flex>
   );
