@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfast_task_assignment=self.webpackChunkfast_task_assignment||[]).push([[166],{2644:function(t,n,e){var u=e(3356);n.Z=function(){return{t:function(t,n){return(0,u.t)(t,n)}}}},4166:function(t,n,e){e.r(n),e.d(n,{default:function(){return r}});var u=e(9804),s=e(2644),a=e(184),r=function(){var t=(0,s.Z)().t;return(0,a.jsx)(u.Z,{type:"NotFound",title:t("pageNotFound"),description:t("pageNotFound_desc")})}}}]);
+//# sourceMappingURL=166.225537e0.chunk.js.map
