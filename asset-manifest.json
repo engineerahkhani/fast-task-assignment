@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/engineerahkhani/fast-task-assignment/static/js/main.f6e74fd6.js",
-    "static/js/392.3ee048ec.chunk.js": "/engineerahkhani/fast-task-assignment/static/js/392.3ee048ec.chunk.js",
-    "static/js/98.fb467f03.chunk.js": "/engineerahkhani/fast-task-assignment/static/js/98.fb467f03.chunk.js",
-    "static/js/166.225537e0.chunk.js": "/engineerahkhani/fast-task-assignment/static/js/166.225537e0.chunk.js",
-    "static/js/787.b3ab05f0.chunk.js": "/engineerahkhani/fast-task-assignment/static/js/787.b3ab05f0.chunk.js",
-    "index.html": "/engineerahkhani/fast-task-assignment/index.html",
-    "main.f6e74fd6.js.map": "/engineerahkhani/fast-task-assignment/static/js/main.f6e74fd6.js.map",
-    "392.3ee048ec.chunk.js.map": "/engineerahkhani/fast-task-assignment/static/js/392.3ee048ec.chunk.js.map",
-    "98.fb467f03.chunk.js.map": "/engineerahkhani/fast-task-assignment/static/js/98.fb467f03.chunk.js.map",
-    "166.225537e0.chunk.js.map": "/engineerahkhani/fast-task-assignment/static/js/166.225537e0.chunk.js.map",
-    "787.b3ab05f0.chunk.js.map": "/engineerahkhani/fast-task-assignment/static/js/787.b3ab05f0.chunk.js.map"
+    "main.js": "/fast-task-assignment/static/js/main.919e83f7.js",
+    "static/js/392.3ee048ec.chunk.js": "/fast-task-assignment/static/js/392.3ee048ec.chunk.js",
+    "static/js/98.fb467f03.chunk.js": "/fast-task-assignment/static/js/98.fb467f03.chunk.js",
+    "static/js/166.225537e0.chunk.js": "/fast-task-assignment/static/js/166.225537e0.chunk.js",
+    "static/js/787.b3ab05f0.chunk.js": "/fast-task-assignment/static/js/787.b3ab05f0.chunk.js",
+    "index.html": "/fast-task-assignment/index.html",
+    "main.919e83f7.js.map": "/fast-task-assignment/static/js/main.919e83f7.js.map",
+    "392.3ee048ec.chunk.js.map": "/fast-task-assignment/static/js/392.3ee048ec.chunk.js.map",
+    "98.fb467f03.chunk.js.map": "/fast-task-assignment/static/js/98.fb467f03.chunk.js.map",
+    "166.225537e0.chunk.js.map": "/fast-task-assignment/static/js/166.225537e0.chunk.js.map",
+    "787.b3ab05f0.chunk.js.map": "/fast-task-assignment/static/js/787.b3ab05f0.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.f6e74fd6.js"
+    "static/js/main.919e83f7.js"
   ]
 }
