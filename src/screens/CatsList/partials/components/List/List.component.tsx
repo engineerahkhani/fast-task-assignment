@@ -34,7 +34,7 @@ const CatsList: React.FC<IListProps> = ({ isLoading, isError, list }) => {
     );
 
   return (
-    <Flex className={classes.listComponentRoot}>
+    <Flex as="aside" className={classes.listComponentRoot}>
       {list?.map((item) => (
         <Card key={item.id} data={item} />
       ))}

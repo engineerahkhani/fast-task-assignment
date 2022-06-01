@@ -8,7 +8,7 @@ const CatsListLoading = () => {
   const classes = useStyles();
 
   return (
-    <Flex className={classes.catListLoadingRoot}>
+    <Flex as="aside" className={classes.catListLoadingRoot}>
       {skeletonCount.map((item) => (
         <CardSkeleton key={item} />
       ))}

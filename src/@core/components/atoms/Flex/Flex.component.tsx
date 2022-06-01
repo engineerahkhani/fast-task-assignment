@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { ReactHTML } from 'react';
 import { createUseStyles, cnj } from '@core/utils/makeStyle';
 
-export interface FlexComponentProps {
+interface CompProps {
+  as?: keyof ReactHTML;
+}
+
+type AsType = CompProps['as'];
+// @ts-ignore
+type DynamicProps = CompProps & ReactHTML[AsType];
+
+export interface FlexComponentProps extends DynamicProps {
   className?: string;
   children?: any;
 }
@@ -9,11 +17,14 @@ export interface FlexComponentProps {
 const FlexComponent: React.FC<FlexComponentProps> = ({
   className,
   children,
+  as: HtmlTag = 'div',
 }) => {
   const classes = useStyles();
 
   return (
-    <div className={cnj(classes.flexComponentRoot, className)}>{children}</div>
+    <HtmlTag className={cnj(classes.flexComponentRoot, className)}>
+      {children}
+    </HtmlTag>
   );
 };
 

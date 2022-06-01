@@ -19,7 +19,7 @@ const LoadMore: React.FC<LoadMoreProps> = ({ disabled, onClick }) => {
       disabled={disabled}
       onClick={onClick}
     >
-      {t('loadMore')}
+      {t('load_more')}
     </Button>
   );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import Flex from '../../atoms/Flex';
 import { cnj, createUseStyles } from '@core/utils/makeStyle';
+
 export interface AlertComponentProps {
   className?: string;
   type: 'Error' | 'EmptyList' | 'NotFound';
@@ -23,8 +24,10 @@ const AlertComponent: React.FC<AlertComponentProps> = ({
   );
 };
 
-const useStyles = createUseStyles({
-  alertComponentRoot: {},
-});
+const useStyles = createUseStyles(({ colors }) => ({
+  alertComponentRoot: {
+    backgroundColor: colors.red,
+  },
+}));
 
 export default AlertComponent;

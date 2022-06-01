@@ -10,7 +10,7 @@ export interface CatsState {
   hasNextPage: boolean;
 }
 
-const initialState: CatsState = {
+export const initialState: CatsState = {
   data: [],
   isLoading: false,
   isLoadingNextPage: false,

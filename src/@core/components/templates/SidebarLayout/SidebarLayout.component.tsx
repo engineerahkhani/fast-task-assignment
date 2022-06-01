@@ -3,16 +3,18 @@ import { NavLink, Outlet, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Flex from '@core/components/atoms/Flex';
 import { cnj, createUseStyles } from '@core/utils/makeStyle';
-import { ITheme } from '../../../types/theme';
 import Text from '@core/components/atoms/Text';
 import { useGetCategoriesQuery } from '../../../api/categoryApi';
+import SidebarLayoutLoading from './SidebarLayout.component.loading';
+import AlertComponent from '../../molecules/Alert';
+import useTranslation from '@core/hooks/useTranslation';
 
 const SidebarLayout: React.FC = () => {
-  const { data: categories } = useGetCategoriesQuery('');
+  const { data: categories, isLoading, isError } = useGetCategoriesQuery('');
   const classes = useStyles();
   const navigate = useNavigate();
   const { category } = useParams();
-
+  const { t } = useTranslation();
   const defaultCategory = categories?.[0]?.id;
 
   useEffect(() => {
@@ -21,21 +23,31 @@ const SidebarLayout: React.FC = () => {
     }
   }, [defaultCategory, category]);
 
+  if (isError) {
+    return (
+      <AlertComponent type="Error" title={t('failed_t_load_categories')} />
+    );
+  }
+
   return (
-    <Flex className={classes.sidebarLayoutRoot}>
-      <nav className={classes.sidebarList}>
-        {categories?.map(({ id, name }) => (
-          <NavLink
-            className={({ isActive }) =>
-              cnj(classes.sidebarItems, isActive && classes.activeClassName)
-            }
-            key={id}
-            to={`${id}`}
-          >
-            <Text color="white">{name}</Text>
-          </NavLink>
-        ))}
-      </nav>
+    <Flex as="section" className={classes.sidebarLayoutRoot}>
+      <Flex as="nav" className={classes.sidebarList}>
+        {isLoading ? (
+          <SidebarLayoutLoading />
+        ) : (
+          categories?.map(({ id, name }) => (
+            <NavLink
+              className={({ isActive }) =>
+                cnj(classes.sidebarItems, isActive && classes.activeClassName)
+              }
+              key={id}
+              to={`${id}`}
+            >
+              <Text color="white">{name}</Text>
+            </NavLink>
+          ))
+        )}
+      </Flex>
       <Flex className={classes.sidebarLayoutContent}>
         <Outlet />
       </Flex>
@@ -44,8 +56,7 @@ const SidebarLayout: React.FC = () => {
 };
 
 const useStyles = createUseStyles(
-  // @ts-ignore
-  ({ zIndices, colors, sizes, radii, media }: ITheme) => ({
+  ({ zIndices, colors, sizes, radii, media }) => ({
     sidebarLayoutRoot: {
       display: 'flex',
       flexDirection: 'column',
@@ -78,6 +89,7 @@ const useStyles = createUseStyles(
     activeClassName: {
       background: colors.primary,
     },
+
     [media.tablet]: {
       sidebarLayoutContent: {
         marginLeft: sizes.sideBarWidth + sizes.md,
